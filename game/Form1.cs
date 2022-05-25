@@ -13,7 +13,8 @@ namespace game
     public partial class Form1 : Form
     {
         private Tamagotchi Tom;
-
+        private DateTime started;
+        
         public Form1()
         {
             InitializeComponent();
@@ -44,5 +45,26 @@ namespace game
             Tom.eat(o);
             button1_Click(sender, e);
         }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DrowingGame dg = new DrowingGame(this);
+            dg.Show();
+            started = new DateTime();
+            started = DateTime.Now;
+            this.Hide();
+        }
+
+        public DateTime GameTimeClosed { get; set; } 
     }
 }

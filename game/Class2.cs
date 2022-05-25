@@ -14,7 +14,18 @@ namespace game
         {
             return (Energy, 0);
         }
+
+        public static bool operator ==(Food f, Food m)
+        {
+            return f.GetType() == m.GetType();
+        }
+
+        public static bool operator !=(Food f, Food m)
+        {
+            return f.GetType() != m.GetType();
+        }
     }
+
     public class Milk : Food 
     {
         public override (int, int) toEat() 

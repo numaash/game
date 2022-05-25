@@ -32,6 +32,40 @@ namespace game
             Satiety += a.Item1; 
         }
 
+        public void eat(Food f1, Food f2)
+        {
+            if ((f1 is Orange && f2 is Milk) || (f1 is Milk && f2 is Orange))
+            {
+                var a = f1.toEat();
+                var b = f2.toEat();
+                Satiety += a.Item1 + b.Item1;
+                Mood += (a.Item2 + b.Item2) * 2;                
+            }
+
+            if ((f1 is Fish && f2 is Milk) || (f1 is Milk && f2 is Fish))
+            {
+                var a = f1.toEat();
+                var b = f2.toEat();
+                Satiety += a.Item1 + b.Item1;
+                Mood -= (a.Item2 + b.Item2) * 2;
+            }
+
+            if ((f1 is Orange && f2 is Fish) || (f1 is Fish && f2 is Orange))
+            {
+                var a = f1.toEat();
+                var b = f2.toEat();
+                Satiety += a.Item1 + b.Item1;
+                Mood += a.Item2 + b.Item2;
+            }
+
+            if (f1 == f2)
+            {
+                var a = f1.toEat();               
+                Satiety += a.Item1 * 2;
+                Mood += a.Item2 * 2;
+            }
+        }
+
         public string Name
         {
             get
